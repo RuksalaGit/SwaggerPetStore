@@ -1,0 +1,124 @@
+Started by user demo
+Running as SYSTEM
+Building in workspace C:\ProgramData\Jenkins\.jenkins\workspace\PetStore
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\PetStore\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/RuksalaGit/PetStore.git # timeout=10
+Fetching upstream changes from https://github.com/RuksalaGit/PetStore.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.40.1.windows.1'
+ > git.exe fetch --tags --force --progress -- https://github.com/RuksalaGit/PetStore.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 6bfb6a744933e0a9ed253da9626f2b4899f57855 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 6bfb6a744933e0a9ed253da9626f2b4899f57855 # timeout=10
+Commit message: "First commit"
+ > git.exe rev-list --no-walk 6bfb6a744933e0a9ed253da9626f2b4899f57855 # timeout=10
+[PetStore] $ cmd /c call C:\WINDOWS\TEMP\jenkins12259505263886103230.bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\PetStore>newman run C:\\Users\\rwimalasooriya\\Downloads\\Postman\\Petstore.postman_collection.json -e C:\\Users\\rwimalasooriya\\Downloads\\Postman\\Pets.postman_environment.json 
+newman
+
+Swagger Petstore
+
+□ pet / {petId} / uploadImage
+└ uploads an image
+  POST https://petstore.swagger.io/v2/pet//uploadImage [404 Not Found, 435B, 1665ms]
+  1. Correct image description is returned
+  2. Status code is 200
+
+└ Add a new pet to the store
+  POST https://petstore.swagger.io/v2/pet [200 OK, 566B, 282ms]
+  √  Response has correct pet name
+  √  Response has correct pet type
+  √  Response has correct Tags
+  √  Response has correct status
+  √  Status code is 200
+
+□ pet / {petId}
+└ Find pet by ID
+  GET https://petstore.swagger.io/v2/pet/9223372036854656000 [404 Not Found, 384B, 288ms]
+  3. Correct pet name is returned
+  4. Status code is 200
+  5. Status should be available
+
+└ Updates a pet in the store with form data
+  POST https://petstore.swagger.io/v2/pet/9223372036854244147 [200 OK, 387B, 285ms]
+  √  Pet ID  should be returned
+  √  Status code is 200
+
+└ Deletes a pet
+  DELETE https://petstore.swagger.io/v2/pet/9223372036854244151 [200 OK, 387B, 277ms]
+  √  Status code is 200
+  √  Pet ID should be returned
+
+□ pet / findByStatus / findByTags
+└ Finds Pets by tags
+  GET https://petstore.swagger.io/v2/pet/findByTags?tags=friendly&tags=healthy [200 OK, 568B, 285ms]
+  √  Tags should be corerct
+  √  Status code is 200
+
+□ pet / findByStatus
+└ Finds Pets by status
+  GET https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=available [200 OK, 43.6kB, 811ms]
+  √  Status code is 200
+  √  Content-Type is application/json
+  √  All items have status 'sold' or 'available'
+
+□ pet
+└ Update an existing pet
+  PUT https://petstore.swagger.io/v2/pet [200 OK, 492B, 277ms]
+  √  Status code is 200
+  √  Pet name is updated
+  √  Correct record is updated
+
+┌─────────────────────────┬─────────────────────┬─────────────────────┐
+│                         │            executed │              failed │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              iterations │                   1 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│                requests │                   8 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│            test-scripts │                  16 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│      prerequest-scripts │                   9 │                   0 │
+├─────────────────────────┼─────────────────────┼─────────────────────┤
+│              assertions │                  22 │                   5 │
+├─────────────────────────┴─────────────────────┴─────────────────────┤
+│ total run duration: 5.1s                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│ total data received: 44.19kB (approx)                               │
+├─────────────────────────────────────────────────────────────────────┤
+│ average response time: 521ms [min: 277ms, max: 1665ms, s.d.: 465ms] │
+└─────────────────────────────────────────────────────────────────────┘
+
+  #  failure         detail                                                                                                                                       
+                                                                                                                                                                  
+ 1.  AssertionError  Correct image description is returned                                                                                                        
+                     expected '{"code":404,"type":"unknown","message":"null for uri: http://petstore.swagger.io/v2/pet//uploadImage"}' to include 'doggy picture' 
+                     at assertion:0 in test-script                                                                                                                
+                     inside "pet / {petId} / uploadImage / uploads an image"                                                                                      
+                                                                                                                                                                  
+ 2.  AssertionError  Status code is 200                                                                                                                           
+                     expected response to have status code 200 but got 404                                                                                        
+                     at assertion:1 in test-script                                                                                                                
+                     inside "pet / {petId} / uploadImage / uploads an image"                                                                                      
+                                                                                                                                                                  
+ 3.  AssertionError  Correct pet name is returned                                                                                                                 
+                     expected undefined to deeply equal 'doggie'                                                                                                  
+                     at assertion:0 in test-script                                                                                                                
+                     inside "pet / {petId} / Find pet by ID"                                                                                                      
+                                                                                                                                                                  
+ 4.  AssertionError  Status code is 200                                                                                                                           
+                     expected response to have status code 200 but got 404                                                                                        
+                     at assertion:1 in test-script                                                                                                                
+                     inside "pet / {petId} / Find pet by ID"                                                                                                      
+                                                                                                                                                                  
+ 5.  AssertionError  Status should be available                                                                                                                   
+                     expected undefined to equal 'available'                                                                                                      
+                     at assertion:2 in test-script                                                                                                                
+                     inside "pet / {petId} / Find pet by ID"                                                                                                      
+Build step 'Execute Windows batch command' marked build as failure
+Finished: FAILURE
